@@ -115,6 +115,10 @@ func Download(version string) error {
 		return err
 	}
 
+	if err := updateRefs(dirs); err != nil {
+		return err
+	}
+
 	fmt.Printf("Done!\n")
 
 	return nil

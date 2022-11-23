@@ -2,6 +2,7 @@ package env
 
 import (
 	_ "embed"
+	"github.com/azert9/goenv/internal/toolchains"
 	"github.com/azert9/goenv/internal/utils"
 	"os"
 	"path"
@@ -67,8 +68,14 @@ func (env *Env) Init() error {
 		return err
 	}
 
-	// TODO
-	if err := os.Symlink("/var/home/julo/.go/sdk/current", gorootAbsPath); err != nil {
+	// TODO: handle situations where no toolchain is available
+
+	toolchainPath, err := toolchains.GetPath("latest")
+	if err != nil {
+		return err
+	}
+
+	if err := os.Symlink(toolchainPath, gorootAbsPath); err != nil {
 		return err
 	}
 

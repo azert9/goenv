@@ -71,6 +71,7 @@ func sortVersions(versions []string) []string {
 
 		if match == nil {
 			result = append(result, version)
+			continue
 		}
 
 		var triplet versionTriplet
