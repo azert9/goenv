@@ -45,7 +45,7 @@ func updateRefs(dirs *dirs) error {
 		return err
 	}
 
-	if (latestVersion == nil && curLatestVersion == nil) || (*latestVersion == *curLatestVersion) {
+	if (latestVersion == nil && curLatestVersion == nil) || (latestVersion != nil && curLatestVersion != nil && *latestVersion == *curLatestVersion) {
 
 		// nothing to do
 
